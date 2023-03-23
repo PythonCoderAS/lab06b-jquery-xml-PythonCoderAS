@@ -42,6 +42,7 @@ $(document).ready(function (){
             const description = jqD.find("subtitle").first().text()
             const feedTitle = jqD.find("title").first().text()
             const feedLink = jqD.find("link:not([rel=self])").first().attr("href")
+            const linkToAtomFeed = jqD.find("link[rel=self]").first().attr("href")
             const feedGuid = jqD.find("id").first().text()
             const lastBuildDate = jqD.find("updated").first().text()
             const outputArea = document.querySelector("#atom-data-body")
@@ -63,7 +64,7 @@ $(document).ready(function (){
                 newText += '<p class="atom-item-description">' + description + "</p>"
                 newText += "</div>"
             })
-            newText += '</div><p class="atom-feed-date">Feed last published on ' + dateText(lastBuildDate) + ". Feed GUID: " + feedGuid + "</p>"
+            newText += '</div><p class="atom-feed-date">Feed last published on ' + dateText(lastBuildDate) + ". Feed GUID: " + feedGuid + '. <a href="' + linkToAtomFeed + '">Link to Atom Feed File</a></p>'
             outputArea.innerHTML = newText
         }
     })
